@@ -1,0 +1,22 @@
+Article  文章表 
+	title   文章名称
+	author  作者
+	datetime  时间（自动获取）
+	sort_id  分类 (外键)
+	reads  浏览数
+
+
+Comment  评论表
+	name   评论人
+	email   邮箱
+	website  网址
+	count   内容
+	article_id   外键（文章id）
+
+Label    标签表
+	label_name  标签名
+	art     文章（多对多关系）
+
+Sort   分类表
+	classname   类别名称
+	
