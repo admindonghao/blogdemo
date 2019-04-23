@@ -3,8 +3,8 @@ Article  文章表
 	author  作者
 	datetime  时间（自动获取）
 	sort_id  分类 (外键)
-	reads  浏览数
-
+	reads  浏览数（默认为0）
+	count  内容   (再议)
 
 Comment  评论表
 	name   评论人
@@ -12,6 +12,7 @@ Comment  评论表
 	website  网址
 	count   内容
 	article_id   外键（文章id）
+
 
 Label    标签表
 	label_name  标签名
