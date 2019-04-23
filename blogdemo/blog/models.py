@@ -45,4 +45,4 @@ class Labels(models.Model):
     art     文章（多对多关系）
     """
     label_name = models.CharField(max_length=10)
-    aet = models.ManyToManyField(Article)
+    aet = models.ManyToManyField(Article, null=True)
