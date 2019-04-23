@@ -10,6 +10,9 @@ class Sort(models.Model):
     """
     classname = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.classname
+
 
 # 创建文章表的类
 class Article(models.Model):
@@ -24,6 +27,9 @@ class Article(models.Model):
     count = models.TextField()
     sort_id = models.ForeignKey(Sort, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.title
+
 
 # 创建评论表的类
 class Comment(models.Model):
@@ -37,6 +43,9 @@ class Comment(models.Model):
     count = models.CharField(max_length=200)
     article_id = models.ForeignKey(Article, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 
 # 创建标签表的类
 class Labels(models.Model):
@@ -46,3 +55,6 @@ class Labels(models.Model):
     """
     label_name = models.CharField(max_length=10)
     aet = models.ManyToManyField(Article, null=True)
+
+    def __str__(self):
+        return self.label_name
