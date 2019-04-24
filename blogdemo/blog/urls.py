@@ -5,7 +5,7 @@ app_name = 'blog'
 
 urlpatterns = [
     url(r'^$', index, name='index'),
-    url(r'^single/$', single, name='single'),
+    url(r'^single/(\d+)/$', single, name='single'),
 ]
 
 

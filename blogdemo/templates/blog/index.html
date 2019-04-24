@@ -70,7 +70,7 @@
                 <article class="post post-1">
                     <header class="entry-header">
                         <h1 class="entry-title">
-                            <a href="{% url 'blog:single' %}">{{article.title}}</a>
+                            <a href="{% url 'blog:single' article.id%}">{{article.title}}</a>
                         </h1>
                         <div class="entry-meta">
                             <span class="post-category"><a href="#">{{article.sort_id}}</a></span>
@@ -84,7 +84,7 @@
                     <div class="entry-content clearfix">
                         <p>{{article.summany}}</p>
                         <div class="read-more cl-effect-14">
-                            <a href="{% url 'blog:single' %}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
+                            <a href="{% url 'blog:single' article.id%}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
                         </div>
                     </div>
                 </article>
@@ -108,7 +108,7 @@
                     <ul>
                         {% for article in articless %}
                         <li>
-                            <a href="{%  %}">{{article.title}}</a>
+                            <a href="{% url 'blog:single' article.id%}">{{article.title}}</a>
                         </li>
                         {% empty %}
                             <h1>ppinda</h1>

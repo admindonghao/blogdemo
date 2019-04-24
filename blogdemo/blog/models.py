@@ -79,6 +79,7 @@ class Comment(models.Model):
     name = models.CharField(max_length=30, verbose_name='评论人')
     email = models.EmailField(verbose_name='邮箱')
     website = models.URLField(verbose_name='网址')
+    create = models.DateTimeField(auto_now_add=True, verbose_name='评论时间')
     count = models.CharField(max_length=200, verbose_name='内容')
     article_id = models.ForeignKey(Article, on_delete=models.CASCADE, verbose_name='文章id')
 
@@ -86,6 +87,7 @@ class Comment(models.Model):
         return self.name
 
     class Meta():
+        ordering = ['-create']
         verbose_name_plural = '评论表'
 
 
