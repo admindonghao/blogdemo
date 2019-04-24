@@ -1,3 +1,8 @@
+{% load blog_extras %}
+{% get_articless as articless %}
+{% get_sorts as sorts %}
+{% get_labelss as labelss %}
+{% get_dates as dates %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +95,7 @@
                         {% for mouth in dates_by_year %}
                             {% for d in mouth.list %}
                             <li>
-                                <a href="#">{{ mouth.grouper }}年{{ d| date:'m' }}月</a>
+                                <a href="{% url 'blog:archive' mouth.grouper d|date:'m' %}">{{ mouth.grouper }}年{{ d| date:'m' }}月</a>
                             </li>
                             {% endfor %}
                         {% endfor %}
@@ -102,7 +107,7 @@
                     <ul>
                         {% for sort in sorts %}
                             <li>
-                                <a href="#">{{ sort.classname }} <span class="post-count">({{ sort.article_set.all.count }})</span></a>
+                                <a href="{% url 'blog:sort' sort.id%}">{{ sort.classname }} <span class="post-count">({{ sort.article_set.all.count }})</span></a>
                             </li>
                         {% empty %}
                             <h1>没有分类</h1>
@@ -115,7 +120,7 @@
                     <ul>
                         {% for label in labelss %}
                             <li>
-                                <a href="#">{{ label.label_name }}</a>
+                                <a href="{% url 'blog:labels' label.id%}">{{ label.label_name }}</a>
                             </li>
                         {% empty %}
                             <h1>暂无标签</h1>
