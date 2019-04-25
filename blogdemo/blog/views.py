@@ -26,10 +26,19 @@ def index(request):
 def single(request, id):
     if request.method == 'GET':
         article = Article.objects.get(pk=id)
-        article.count = markdown.markdown(article.count,extensions=[
-                                        'markdown.extensions.extra',
-                                        'markdown.extensions.codehilite',
-                                        ])
+        # article.count = markdown.markdown(article.count, extensions=[
+        #                                 'markdown.extensions.extra',
+        #                                 'markdown.extensions.codehilite',
+        #                                 'markdown.extensions.toc',
+        #                                 ])
+        md = markdown.Markdown(extensions=[
+            'markdown.extensions.extra',
+            'markdown.extensions.codehilite',
+            'markdown.extensions.toc',
+        ])
+        article.count = md.convert(article.count)
+        article.toc = md.toc
+
         return render(request, 'blog/single.html', {'article':article})
     elif request.method == 'POST':
         comment = Comment()
